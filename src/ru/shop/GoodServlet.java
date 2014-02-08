@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ru.shop.dto.Good;
 import ru.shop.services.GoodService;
@@ -27,7 +28,8 @@ public class GoodServlet extends HttpServlet {
        	ArrayList<Good> goods;
 		try {
 			goods = goodService.getGoodsDetails(sqlQuery);
-			System.out.println(goods.get(0).getName());
+			HttpSession session = request.getSession();
+			session.setAttribute("goodsTable", goods);			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=windows-1251"
+    pageEncoding="windows-1251"%>
+<%@ page import="java.util.*"
+		 import="ru.shop.dto.Good" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +13,31 @@
 	<jsp:setProperty property="name" name="user" value="Guest"/>
 </jsp:useBean>
 
-Welcome to shop, <jsp:getProperty property="name" name="user"/>
+<jsp:useBean id="cart" class="ru.shop.dto.ShoppingCart" scope="session"></jsp:useBean>
 
-<form action="GoodServlet" method="get">
-	<input type="text" name="sqlQuery">
-	<br><br><input type="submit">
-</form>
+<jsp:include page="/GoodServlet" >
+	<jsp:param value="select * from goods" name="sqlQuery"/>
+</jsp:include>
+
+Добро пожаловать, <jsp:getProperty property="name" name="user"/><br>
+<a href="cart.jsp"><u>В заказе : <jsp:getProperty property="amount" name="cart"/> товара</u></a>
+
+
+<%ArrayList<Good> goodsList = (ArrayList<Good>) session.getAttribute("goodsTable");%>
+	<br><br>
+	<table>
+	<tr>
+		<td colspan=2><b>Список товаров</b></td>
+	</tr>
+	<%for(Good good : goodsList){%>
+	<tr>
+		<td align="left"><a href=""><u><%=good.getName()%></u></a></td>
+		<td align="right"><%=good.getPrice()%></td>
+		<td align="center"><a href="CartServlet?operation=add&goodId=<%= good.getId()%>"><u>Добавить в корзину</u></a></td> 
+	</tr>
+	<%}%>
+	</table>
+	
+	
 </body>
 </html>

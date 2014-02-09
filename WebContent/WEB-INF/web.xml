@@ -20,6 +20,12 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/CartServlet</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>ru.shop.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 </web-app>

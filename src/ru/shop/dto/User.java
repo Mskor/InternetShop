@@ -3,13 +3,15 @@ package ru.shop.dto;
 public class User {
 	private String name;
 	private long userId, 
-				 cash;
+				 cash,
+				 password;
 	public User(){
 		
 	}
-	public User(long userId, String name, long cash) {
+	public User(long userId, String name, long password, long cash) {
 		this.name = name;
 		this.userId = userId;
+		this.password = password;
 		this.cash = cash;
 	}
 	
@@ -35,5 +37,11 @@ public class User {
 
 	public void setCash(long cash) {
 		this.cash = cash;
+	}
+	public long getPassword() {
+		return password;
+	}
+	public void setPassword(long password) {
+		this.password = password;
 	}	
 }

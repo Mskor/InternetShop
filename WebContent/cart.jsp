@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:useBean id="user" class="ru.shop.dto.User" scope="session">
-		<jsp:setProperty property="name" name="user" value="Guest"/>
+		<jsp:setProperty property="name" name="user" value="Гость"/>
 	</jsp:useBean>
 	
 	<jsp:useBean id="cart" class="ru.shop.dto.ShoppingCart" scope="session"></jsp:useBean>
@@ -29,7 +29,7 @@
 				
 				<tr>
 					<td align="left"><a href="description.jsp?goodId=<%=good.getId()%>&returnTo=cart.jsp"><u><%=good.getName()%></u></a></td>
-					<td align="right"><%=good.getPrice()%></td>	
+					<td align="right"><%="  "%><%=good.getPrice()%> руб. <%="   "%> </td>	
 					<td align="center"><a href="CartServlet?operation=remove&goodId=<%= good.getId()%>"><u>Убрать из корзины</u></a></td>	 
 					<%totalCost+=good.getPrice(); %>
 				</tr>
@@ -39,7 +39,8 @@
 		 
 	<%}%> 
 	</table>
-	<br>Товара на сумму: <%=totalCost %>
-	<br><a href=""><u><b>Оплатить заказ</b></u></a>
+	<br>Товара на сумму: <%=totalCost %> руб.
+	<br><a href="payment.jsp?totalCost=<%= totalCost %>"><u><b>Оплатить заказ</b></u></a>
+	
 </body>
 </html>

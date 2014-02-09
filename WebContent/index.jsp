@@ -29,9 +29,10 @@
 </form>
 <%} else {%>
 <br>Деньги на счету: <%=user.getCash() %> руб. <br>
-<a href="logout"><u>Выйти</u></a> <br>
+<a href="logout?returnTo=index.jsp"><u>Выйти</u></a> <br>
 <%}%>
-<a href="register.jsp"><u> Регистрация</u></a><br><br>
+<a href="register.jsp"><u> Регистрация</u></a><br>
+<a href="cashier.jsp"><u>Пополнить счет</u></a> <br><br>
 <a href="cart.jsp"><u>В заказе : <jsp:getProperty property="amount" name="cart"/> товара</u></a>
 
 

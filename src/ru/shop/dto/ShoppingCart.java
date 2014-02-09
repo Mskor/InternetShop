@@ -18,6 +18,11 @@ public class ShoppingCart {
 		goodsIdCart.remove(Long.valueOf(goodId));
 		amount--;		
 	}
+	
+	public void removeAll(){
+		amount = 0;
+		goodsIdCart.clear();
+	}
 
 	public ArrayList<Long> getGoodsIdCart() {
 		return goodsIdCart;

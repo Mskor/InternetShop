@@ -32,7 +32,7 @@ public class CartServlet extends HttpServlet {
 		}
 		else if(operation.equalsIgnoreCase("remove")){
 			cart.removeFromCart(goodId);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("cart.jsp");
 		}
 		else{
 			throw new ServletException("Wrong operation");

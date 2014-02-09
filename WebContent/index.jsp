@@ -43,7 +43,7 @@
 	</tr>
 	<%for(Good good : goodsList){%>
 	<tr>
-		<td align="left"><a href="description.jsp?goodId=<%=good.getId()%>"><u><%=good.getName()%></u></a></td>
+		<td align="left"><a href="description.jsp?goodId=<%=good.getId()%>&returnTo=index.jsp"><u><%=good.getName()%></u></a></td>
 		<td align="right"><%=good.getPrice()%></td>
 		<td align="center"><a href="CartServlet?operation=add&goodId=<%= good.getId()%>"><u>Добавить в корзину</u></a></td> 
 	</tr>

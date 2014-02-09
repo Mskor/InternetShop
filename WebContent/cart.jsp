@@ -16,6 +16,7 @@
 	<jsp:useBean id="cart" class="ru.shop.dto.ShoppingCart" scope="session"></jsp:useBean>
 	<%ArrayList<Good> goodsList = (ArrayList<Good>) session.getAttribute("goodsTable");%>
 	<%ArrayList<Long> cartList = cart.getGoodsIdCart();%>
+	<%long totalCost = 0; %>
 	<table>
 	<tr>
 		<td colspan=2><b>Список товаров в корзине</b></td>
@@ -27,8 +28,10 @@
 		<%if(good.getId() == index) {%>
 				
 				<tr>
-					<td align="left"><a href=""><u><%=good.getName()%></u></a></td>
-					<td align="right"><%=good.getPrice()%></td>		 
+					<td align="left"><a href="description.jsp?goodId=<%=good.getId()%>&returnTo=cart.jsp"><u><%=good.getName()%></u></a></td>
+					<td align="right"><%=good.getPrice()%></td>	
+					<td align="center"><a href="CartServlet?operation=remove&goodId=<%= good.getId()%>"><u>Убрать из корзины</u></a></td>	 
+					<%totalCost+=good.getPrice(); %>
 				</tr>
 				
 			<%}%>		
@@ -36,6 +39,7 @@
 		 
 	<%}%> 
 	</table>
-	
+	<br>Товара на сумму: <%=totalCost %>
+	<br><a href=""><u><b>Оплатить заказ</b></u></a>
 </body>
 </html>

@@ -35,7 +35,7 @@
 		}		
 	%>
 	
-	<br><u><a href="index.jsp">На главную</a></u>
+	<br><u><a href="<%=request.getParameter("returnTo")%>">Назад</a></u>
 </div>
 </body>
 </html>

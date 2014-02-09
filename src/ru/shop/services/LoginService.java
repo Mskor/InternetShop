@@ -45,4 +45,21 @@ public class LoginService {
 			}
 		return res;
 	}
+	
+	public boolean register(String userName, long userPassword) throws SQLException{
+		User res = null;
+		
+		Statement statement = null;
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+				
+		Connection connection = DriverManager.getConnection(URL, username, password);
+    	statement = connection.createStatement();
+    	
+    	return statement.execute("insert into users (name, passhash, cash) values ('"+userName+"', "+userPassword+", 0)"); 
+    	
+	}
 }
